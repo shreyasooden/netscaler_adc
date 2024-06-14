@@ -3,17 +3,14 @@
   gather_facts: false
   collections:
     - citrix.adc
-  vars:
-    lb_server: server1
-    service_out: {}
   tasks:
     - name: Get lb service
       delegate_to: localhost
 #      register: result
       citrix_adc_nitro_request:
-        nsip: "{{ nsip }}"
-        nitro_user: "{{ nitro_user }}"
-        nitro_pass: "{{ nitro_pass }}"
+        nsip: 192.168.150.131
+        nitro_user: nsroot
+        nitro_pass: redhat
         validate_certs: no
         operation: get
         resource: lbvserver_service_binding 
