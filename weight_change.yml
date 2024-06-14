@@ -7,7 +7,7 @@
     - name: Get lb service
       delegate_to: localhost
 #      register: result
-      citrix_adc_nitro_request:
+      citrix.adc.citrix_adc_nitro_request:
         nsip: 192.168.150.131
         nitro_user: nsroot
         nitro_pass: redhat
