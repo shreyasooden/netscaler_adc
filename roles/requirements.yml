@@ -1,1 +1,4 @@
-
+---
+collections:
+  - name: citrix.adc
+    version: 1.3.0
