@@ -18,6 +18,7 @@
           {% else %}
             providedtime is after starttime
           {% endif %}
+      register: before_end
 
     - name: Compare starttime and providedtime
       debug:
@@ -27,5 +28,20 @@
           {% else %}
             provided time is after starttime
           {% endif %}
+      register: after_start
+    - name: Get the current time in ISO 8601 format
+      set_fact:
+        current_time: "{{ ansible_date_time.iso8601 }}"
+    - name: check is provided time is in cureent time
+      debug:
+        msg: >
+          {% if  providedtime | compare_datetimes(current_time) %}
+            providedtime  is earlier than current time
+          {% else %}
+            providedtime is after current time
+          {% endif %}
+      
+    
+      
 
 
