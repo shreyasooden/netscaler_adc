@@ -11,14 +11,13 @@
 
   tasks:
     - name: Compare endtime and provided time
-      debug:
-        msg: >
+      setfact:
+        before_end: >
           {% if  providedtime | compare_datetimes(datetime2) %}
             providedtime  is earlier than endtime
           {% else %}
             providedtime is after starttime
           {% endif %}
-      register: before_end
 
     - name: Compare starttime and providedtime
       debug:
