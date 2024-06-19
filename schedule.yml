@@ -31,7 +31,7 @@
       register: after_start
     - name: Get the current time in ISO 8601 format
       set_fact:
-        current_time: "{{ ansible_date_time.iso8601 }}"
+        current_time: "{{ ansible_date_time }}"
     - name: check is provided time is in cureent time
       debug:
         msg: >
