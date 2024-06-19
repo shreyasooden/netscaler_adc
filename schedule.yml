@@ -14,7 +14,7 @@
       set_fact:
         before_end: >
           {% if  providedtime | compare_datetimes(datetime2) %}
-            providedtime  is earlier than endtime
+            providedtime is earlier than endtime
           {% else %}
             providedtime is after starttime
           {% endif %}
