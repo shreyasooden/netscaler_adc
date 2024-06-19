@@ -20,26 +20,24 @@
           {% endif %}
 
     - name: Compare starttime and providedtime
-      debug:
-        msg: >
+      set_fact:
+        after_start: >
           {% if providedtime | compare_datetimes(datetime1) %}
             providedtime is earlier than starttime
           {% else %}
             provided time is after starttime
           {% endif %}
-      register: after_start
     - name: Get the current time in ISO 8601 format
       set_fact:
         current_time: "{{ ansible_date_time.date }} {{ ansible_date_time.time }}"
     - name: check is provided time is in cureent time
-      debug:
-        msg: >
+      set_fact:
+        time_exceed: >
           {% if  providedtime | compare_datetimes(current_time) %}
             providedtime  is earlier than current time
           {% else %}
             providedtime is after current time
           {% endif %}
-      register: time_exceed
     - name: print
       debug:
         msg: "{{ after_start }}"
@@ -47,7 +45,7 @@
     - name: schedule template
       shell: echo "scheduled"
       when: >
-            after_start.stdout == "provided time is after starttime"
+            after_start == "provided time is after starttime"
       
       
     
