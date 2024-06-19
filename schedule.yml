@@ -1,9 +1,9 @@
 ---
 - hosts: localhost
   vars:
-    starttime: "2023-06-18 08:00:00"
+    datetime1: "2023-06-18 08:00:00"
     providedtime: "2023-06-18 09:00:00"
-    endtime: "2023-06-19 07:30:00"
+    datetime2: "2023-06-19 07:30:00"
     datetime_list:
       - "2023-06-18 08:00:00"
       - "2023-06-18 09:00:00"
@@ -13,7 +13,7 @@
     - name: Compare endtime and provided time
       debug:
         msg: >
-          {% if  providedtime | compare_datetimes(endtime) %}
+          {% if  providedtime | compare_datetimes(datetime2) %}
             providedtime  is earlier than endtime
           {% else %}
             providedtime is after starttime
@@ -22,7 +22,7 @@
     - name: Compare starttime and providedtime
       debug:
         msg: >
-          {% if providedtime | compare_datetimes(starttime) %}
+          {% if providedtime | compare_datetimes(datetime1) %}
             providedtime is earlier than starttime
           {% else %}
             provided time is after starttime
