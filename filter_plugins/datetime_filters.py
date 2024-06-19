@@ -1,9 +1,10 @@
 from datetime import datetime
 
-def compare_datetimes(datetime1, datetime2, format="%Y-%m-%d %H:%M:%S"):
+def compare_datetimes(datetime1, datetime2, datetime3, format="%Y-%m-%d %H:%M:%S"):
     dt1 = datetime.strptime(datetime1, format)
     dt2 = datetime.strptime(datetime2, format)
-    return dt1 < dt2
+    dt3 = datetime.strptime(datetime3, format)
+    return dt1 < dt3 < dt2
 
 class FilterModule(object):
     def filters(self):
