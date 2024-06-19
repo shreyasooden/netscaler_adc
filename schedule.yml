@@ -40,6 +40,12 @@
           {% else %}
             providedtime is after current time
           {% endif %}
+      register: time_exceed
+    - name: schedule template
+      shell: echo "scheduled"
+      when: >
+            ("provided time is after starttime" in after_start) & ("providedtime  is earlier than endtime" in before_end)
+      
       
     
       
