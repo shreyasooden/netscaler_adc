@@ -44,7 +44,7 @@
     - name: schedule template
       shell: echo "scheduled"
       when: >
-            ("providedtime is earlier than starttime" in after_start)
+            (after_start == "provided time is after starttime")
       
       
     
