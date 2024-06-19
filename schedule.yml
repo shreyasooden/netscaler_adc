@@ -1,15 +1,31 @@
 ---
 - hosts: localhost
   vars:
-    datetime1: "2023-06-18 08:00:00"
-    datetime2: "2023-06-19 09:00:00"
-    datetime3: "2023-06-18 10:00:00"
+    starttime: "2023-06-18 08:00:00"
+    providedtime: "2023-06-18 09:00:00"
+    endtime: "2023-06-19 07:30:00"
+    datetime_list:
+      - "2023-06-18 08:00:00"
+      - "2023-06-18 09:00:00"
+      - "2023-06-18 07:30:00"
+
   tasks:
-    - name: Compare date-times using custom filter
+    - name: Compare endtime and provided time
       debug:
         msg: >
-          {% if datetime3 | compare_datetimes(datetime1,datetime2 ) %}
-            Date-Time {{ datetime3 }} is in between {{ datetime1 }} {{ datetime2 }}
+          {% if  providedtime | compare_datetimes(endtime) %}
+            providedtime  is earlier than endtime
           {% else %}
-            Date-Time is not in change schedule time
+            providedtime is after starttime
           {% endif %}
+
+    - name: Compare starttime and providedtime
+      debug:
+        msg: >
+          {% if providedtime | compare_datetimes(starttime) %}
+            providedtime is earlier than starttime
+          {% else %}
+            provided time is after starttime
+          {% endif %}
+
+
