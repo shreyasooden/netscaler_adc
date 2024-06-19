@@ -41,6 +41,10 @@
             providedtime is after current time
           {% endif %}
       register: time_exceed
+    - name: print
+      debug:
+        msg: "{{ after_start }}"
+      
     - name: schedule template
       shell: echo "scheduled"
       when: >
