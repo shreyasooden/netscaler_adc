@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  vars:
+    datetime1: "2023-06-18 08:00:00"
+    datetime2: "2023-06-18 09:00:00"
+  tasks:
+    - name: Compare date-times using custom filter
+      debug:
+        msg: >
+          {% if datetime1 | compare_datetimes(datetime2) %}
+            Date-Time {{ datetime1 }} is before {{ datetime2 }}
+          {% else %}
+            Date-Time {{ datetime1 }} is not before {{ datetime2 }}
+          {% endif %}
