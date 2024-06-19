@@ -11,7 +11,7 @@
 
   tasks:
     - name: Compare endtime and provided time
-      setfact:
+      set_fact:
         before_end: >
           {% if  providedtime | compare_datetimes(datetime2) %}
             providedtime  is earlier than endtime
