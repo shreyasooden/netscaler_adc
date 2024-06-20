@@ -11,8 +11,12 @@
         #current_time: "{{ ansible_date_time.date }} {{ ansible_date_time.time }}"
         current_time: "2023-06-19 08:00:00"
     
-    - name: Compare datetime1 and datetime2
+    - name: Schedule template when schedule time is in Change window
       debug:
         msg: "{{ provided_time }} is in change schedule "
       when: start_time | to_datetime() <  provided_time | to_datetime() < end_time | to_datetime() and current_time | to_datetime() < provided_time | to_datetime()
 
+    - name: Schedule template when schedule time has passed but still in Change window
+      debug:
+        msg: "{{ provided_time }} is in change schedule "
+      when: start_time | to_datetime() <  provided_time | to_datetime() < end_time | to_datetime() and current_time | to_datetime() > provided_time | to_datetime() and current_time | to_datetime() < end_time | to_datetime()
