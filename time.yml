@@ -13,5 +13,5 @@
     - name: Compare datetime1 and datetime2
       debug:
         msg: "{{ datetime3 }} is in change schedule "
-      when: datetime1 | to_datetime() <  datetime3 | to_datetime() < datetime2 | to_datetime() and current_time | to_datetime() > datetime3 | to datetime()
+      when: datetime1 | to_datetime() <  datetime3 | to_datetime() < datetime2 | to_datetime() and current_time | to_datetime() > datetime3 | to_datetime()
 
