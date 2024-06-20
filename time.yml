@@ -6,8 +6,8 @@
     - name: Set date-time facts
       set_fact:
         start_time: "2023-06-18 08:00:00"
-        end_time: "2023-06-19 09:00:00"
-        provided_time: "2023-06-18 10:30:00"
+        end_time: "2023-06-20 09:00:00"
+        provided_time: "2023-06-19 10:30:00"
         #current_time: "{{ ansible_date_time.date }} {{ ansible_date_time.time }}"
         current_time: "2023-06-19 08:00:00"
     
