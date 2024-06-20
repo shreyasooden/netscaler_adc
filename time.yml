@@ -5,13 +5,13 @@
   tasks:
     - name: Set date-time facts
       set_fact:
-        datetime1: "2023-06-18 08:00:00"
-        datetime2: "2023-06-19 09:00:00"
-        datetime3: "2023-06-17 10:30:00"
+        start_time: "2023-06-18 08:00:00"
+        end_time: "2023-06-19 09:00:00"
+        provided_time: "2023-06-17 10:30:00"
         current_time: "{{ ansible_date_time.date }} {{ ansible_date_time.time }}"
     
     - name: Compare datetime1 and datetime2
       debug:
         msg: "{{ datetime3 }} is in change schedule "
-      when: datetime1 | to_datetime() <  datetime3 | to_datetime() < datetime2 | to_datetime() and current_time | to_datetime() > datetime3 | to_datetime()
+      when: start_time | to_datetime() <  provided_time | to_datetime() < end_time | to_datetime() and current_time | to_datetime() < provided_time | to_datetime()
 
