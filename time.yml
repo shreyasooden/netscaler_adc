@@ -7,11 +7,12 @@
       set_fact:
         start_time: "2023-06-18 08:00:00"
         end_time: "2023-06-19 09:00:00"
-        provided_time: "2023-06-17 10:30:00"
-        current_time: "{{ ansible_date_time.date }} {{ ansible_date_time.time }}"
+        provided_time: "2023-06-18 10:30:00"
+        #current_time: "{{ ansible_date_time.date }} {{ ansible_date_time.time }}"
+        current_time: "2023-06-19 08:00:00"
     
     - name: Compare datetime1 and datetime2
       debug:
-        msg: "{{ datetime3 }} is in change schedule "
+        msg: "{{ provided_time }} is in change schedule "
       when: start_time | to_datetime() <  provided_time | to_datetime() < end_time | to_datetime() and current_time | to_datetime() < provided_time | to_datetime()
 
