@@ -6,11 +6,11 @@
     - name: Set date-time facts
       set_fact:
         datetime1: "2023-06-18 08:00:00"
-        datetime2: "2023-06-18 09:00:00"
-        datetime3: "2023-06-18 07:30:00"
+        datetime2: "2023-06-19 09:00:00"
+        datetime3: "2023-06-18 10:30:00"
     
     - name: Compare datetime1 and datetime2
       debug:
-        msg: "{{ datetime1 }} is earlier than {{ datetime2 }}"
-      when: datetime1 | to_datetime() < datetime2 | to_datetime()
+        msg: "{{ datetime3 }} is in change schedule "
+      when: datetime1 | to_datetime() <  datetime3 | to_datetime() < datetime2 | to_datetime()
 
